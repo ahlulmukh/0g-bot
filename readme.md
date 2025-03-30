@@ -39,7 +39,6 @@ for auto swap 0g testnet
    ```
    http://user:pass@host:port
    http://user:pass@host:port
-   http://user:pass@host:port
    ```
 
 4. Create privatekey `nano privatekey.txt` and put your private key one per line
@@ -47,8 +46,6 @@ for auto swap 0g testnet
    ```
    0xprivatkey1
    0xprivatkey2
-   0xprivatkey3
-   0xprivatkey4
    ```
 
 ## Usage
@@ -61,17 +58,14 @@ npm run start
 
 ## Stay Connected
 
-- Channel Telegram : [Telegram](https://t.me/elpuqus)
-- Channel WhatsApp : [Whatsapp](https://whatsapp.com/channel/0029VavBRhGBqbrEF9vxal1R)
-- Discord : [Discord](https://discord.com/invite/uKM4UCAccY)
+- Channel Telegram : [Telegram](https://t.me/chrisel2)
 
 ## Donation
 
 If you would like to support the development of this project, you can make a donation using the following addresses:
 
-- Solana: `5jQMndHzWVH8MCitXdUEYmshJZXVKCzUG12mxJku4WdX`
-- EVM: `0x72120c3c9cf3fee3ad57a34d5fcdbffe45f4ff28`
-- BTC: `bc1ppfl3w3l4spnda7lawlhlycwuq2ekz74c936c8emwfprfu9hyun6sq5k6xl`
+- Solana: `janechris.sol`
+- EVM: `janetf.eth`
 
 ## Disclaimer
 
