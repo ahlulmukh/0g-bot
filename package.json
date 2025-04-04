@@ -1,6 +1,6 @@
 {
   "name": "0g-bot",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "auto swap 0g-lab",
   "scripts": {
     "start": "node dist/index.js",
