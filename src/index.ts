@@ -35,31 +35,24 @@ async function main(): Promise<void> {
 
   const proxiesLoaded = loadProxies();
   if (!proxiesLoaded) {
-    logMessage(null, null, "No Proxy. Using default IP", "debug");
+    logMessage(null, null, "No Proxy. Using default IP", "warning");
   }
 
   let successful = 0;
 
   for (let i = 0; i < count; i++) {
     console.log(chalk.white("-".repeat(85)));
-    logMessage(i + 1, count, "Processing Transaction", "debug");
+    logMessage(i + 1, count, "Processing Transaction", "process");
     const privkey = accounts[i];
     const currentProxy = await getRandomProxy(i + 1, count);
     const og = new ogBot(privkey, currentProxy, i + 1, count);
 
     try {
       let txCount = 0;
-
-      const transactionSequence = [
-        og.processSwapUsdtBtc,
-        og.processSwapUsdtEth,
-        og.processSwapUsdtBtc,
-        og.processSwapUsdtEth,
-      ];
-
       while (txCount < totalTransactionGlobal) {
-        logMessage(i + 1, count, `Total Transaction: ${txCount + 1}/${totalTransactionGlobal}`, "debug");
-        await transactionSequence[txCount % transactionSequence.length].call(og);
+        logMessage(i + 1, count, `Total Transaction: ${txCount + 1}/${totalTransactionGlobal}`, "info");
+        await og.autoSwapBtcUsdt();
+        await og.autoSwapEthUsdt();
         txCount++;
       }
 

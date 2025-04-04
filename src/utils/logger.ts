@@ -13,14 +13,13 @@ export const prompt = (question: string): Promise<string> => {
     });
   });
 };
-//
 
 export function logMessage(
-  accountNum: number | null = null,
+  currentNum: number | null = null,
   total: number | null = null,
   message: string = "",
-  messageType: any = "info"
-) {
+  messageType: string = "info"
+): void {
   const now = new Date();
   const timestamp = now
     .toLocaleString("id-ID", {
@@ -34,25 +33,30 @@ export function logMessage(
     })
     .replace(/\./g, ":")
     .replace(/, /g, " ");
-  const accountStatus = accountNum && total ? `[${accountNum}/${total}] ` : "";
+  const accountStatus = currentNum && total ? `[${currentNum}/${total}] ` : "";
 
-  let logText;
-  switch (messageType) {
-    case "success":
-      logText = chalk.green(`[✓] ${message}`);
-      break;
-    case "error":
-      logText = chalk.red(`[-] ${message}`);
-      break;
-    case "process":
-      logText = chalk.yellow(`[!] ${message}`);
-      break;
-    case "debug":
-      logText = chalk.blue(`[~] ${message}`);
-      break;
-    default:
-      logText = chalk.white(`[?] ${message}`);
-  }
+  const colors = {
+    info: chalk.blueBright,
+    success: chalk.greenBright,
+    error: chalk.redBright,
+    warning: chalk.yellowBright,
+    process: chalk.cyanBright,
+    debug: chalk.blue,
+  };
+
+  const emojis = {
+    info: "[ℹ]",
+    success: "[✓]",
+    error: "[-]",
+    warning: "[!]",
+    process: "[>]",
+    debug: "[*]",
+  };
+
+  const logColor = colors[messageType as keyof typeof colors] || chalk.white;
+  const emoji = emojis[messageType as keyof typeof emojis] || "❓";
+
+  let logText = logColor(`${emoji} ${message}`);
 
   console.log(
     `${chalk.white("[")}${chalk.dim(timestamp)}${chalk.white(
@@ -60,8 +64,6 @@ export function logMessage(
     )} ${accountStatus}${logText}`
   );
 }
-
-
 
 export { rl };
 
